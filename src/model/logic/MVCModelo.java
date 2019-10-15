@@ -59,16 +59,17 @@ public class MVCModelo {
 	
 	public void cargarJsonArbol()
 	{
-		String path = "./data/data.json";
+		String path = "./data/bogota_cadastral.json";
 		Gson gson = new Gson();
 		JsonReader reader;
 		try {
 			reader = new JsonReader(new FileReader(path));
-			FeatureCollection = gson.fromJson(reader,  Feature.class );
-			
+			FeatureCollection = gson.fromJson(reader,  ArbolRojoNegro.class );
+			System.out.println(""+FeatureCollection.size());
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
+			System.out.println("la cague");
 			e.printStackTrace();
 		}
 
@@ -109,7 +110,7 @@ public class MVCModelo {
 			while(i<5)
 			{
 				Viaje val=null;
-				reader = new CSVReader(new FileReader("./data/bogota-cadastral-2018-"+i+"-MonthlyAggregate.csv"));
+				reader = new CSVReader(new FileReader("./data/bogota-cadastral-2018-"+i+"-All-MonthlyAggregate.csv"));
 				reader.readNext();
 				for(String[] nextLine : reader) 
 				{
@@ -125,7 +126,7 @@ public class MVCModelo {
 					colaDia.insert(val);
 					contador++;
 				}
-				reader = new CSVReader(new FileReader("./data/bogota-cadastral-2018-"+i+"-HourlyAggregate.csv"));
+				reader = new CSVReader(new FileReader("./data/bogota-cadastral-2018-"+i+"-All-HourlyAggregate.csv"));
 				reader.readNext();
 				for(String[] nextLine : reader) 
 				{

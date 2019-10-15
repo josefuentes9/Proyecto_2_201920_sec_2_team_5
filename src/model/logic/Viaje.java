@@ -1,6 +1,6 @@
 package model.logic;
 
-public class Viaje
+public class Viaje implements Comparable<Viaje>
 {
 	private double trimestre;
 	private double sourceid;
@@ -65,6 +65,24 @@ public class Viaje
 
 	public void setTrimestre(double trimestre) {
 		this.trimestre = trimestre;
+	}
+
+	@Override
+	public int compareTo(Viaje that) {
+		// TODO Auto-generated method stub
+				if(this.mean_travel_time>that.mean_travel_time)
+				{
+					return 1;
+				}
+				else if(this.mean_travel_time>that.mean_travel_time)
+				{
+					return -1;
+				}
+				else
+				{
+					return 0;
+				}
+	
 	}
 
 }
